@@ -20,4 +20,19 @@ dependencies {
     compile 'org.thymeleaf.extras:thymeleaf-extras-java8time:2.1.0.RELEASE'
     // https://mvnrepository.com/artifact/org.hashids/hashids
     compile 'org.hashids:hashids:1.0.3'
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-orm
+    compile 'org.springframework:spring-orm:5.0.1.RELEASE'
+    // ORIGINAL DEPENDENCY compile 'org.springframework:spring-orm:4.2.5.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
+    compile 'org.hibernate:hibernate-core:5.2.12.Final'
+    // ORIGINAL DEPENDENCY compile 'org.hibernate:hibernate-core:5.1.0.Final'
+
+    // https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-dbcp
+    compile 'org.apache.tomcat:tomcat-dbcp:9.0.1'
+    // ORIGINAL DEPENDENCY compile 'org.apache.tomcat:tomcat-dbcp:8.0.32'
+
+    // https://mvnrepository.com/artifact/com.h2database/h2
+    compile 'com.h2database:h2:1.4.196'
 }
