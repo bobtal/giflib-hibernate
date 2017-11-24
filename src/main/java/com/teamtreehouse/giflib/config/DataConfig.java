@@ -13,7 +13,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import javax.sql.DataSource;
 
 // Start the database server from the terminal
-// java -cp h2*.jar org.h2.tools.Server
+// java -cp h2-1.4.190.jar org.h2.tools.Server
 @Configuration
 @PropertySource("app.properties")
 public class DataConfig {
