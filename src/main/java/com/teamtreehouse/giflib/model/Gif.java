@@ -1,6 +1,8 @@
 package com.teamtreehouse.giflib.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -12,11 +14,18 @@ public class Gif {
 
     @Lob
     private byte[] bytes;
+    @NotNull(message = "{gif.description.notnull}")
+    @Size(min = 1, message = "{gif.description.notnull}")
     private String description;
+
+    // add a file field for the Gif entity and so it can be bound in the form
+    // includes creating a Validator
+    // https://gist.github.com/christherama/f35599c6084cfdc2834311c4f44358a5
 
     @ManyToOne
 //    @JoinColumn(name = "category_id",
 //            foreignKey = @ForeignKey(name = "CATEGORY_ID_FK"))
+    @NotNull(message = "{gif.category.notnull}")
     private Category category;
     private LocalDateTime dateUploaded = LocalDateTime.now();
     private String username = "You";
