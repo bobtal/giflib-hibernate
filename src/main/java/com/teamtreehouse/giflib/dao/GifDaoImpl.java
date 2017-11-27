@@ -11,34 +11,10 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 @Repository
-public class GifDaoImpl implements GifDao {
-    @Autowired
-    private SessionFactory sessionFactory;
+public class GifDaoImpl extends HibernateDao implements GifDao {
 
-    @Override
-    public List<Gif> findAll() {
-        Session session = sessionFactory.openSession();
-
-        // LONG FORM
-        // Get a CriteriaBuilder
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-
-        // Get a CriteriaQuery for the Category class
-        CriteriaQuery<Gif> criteriaQuery = builder.createQuery(Gif.class);
-
-        // Specify Criteria root
-        criteriaQuery.from(Gif.class);
-
-        // Execute query
-        List<Gif> gifs = session.createQuery(criteriaQuery).getResultList();
-
-        // SHORT FORM ATTEMPT - which doesn't work (cast exception)...need to troubleshoot
-//        List<Gif> gifs = session.createQuery(
-//                (CriteriaQuery<Gif>)session.getCriteriaBuilder().createQuery(Gif.class).from(Gif.class)
-//        ).getResultList();
-
-        session.close();
-        return gifs;
+    public GifDaoImpl() {
+        typeParameterClass = Gif.class;
     }
 
     @Override
@@ -51,19 +27,12 @@ public class GifDaoImpl implements GifDao {
 
     @Override
     public void save(Gif gif) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.saveOrUpdate(gif);
-        session.getTransaction().commit();
-        session.close();
+        super.save(gif);
     }
 
     @Override
     public void delete(Gif gif) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.delete(gif);
-        session.getTransaction().commit();
-        session.close();
+        super.delete(gif);
     }
+
 }

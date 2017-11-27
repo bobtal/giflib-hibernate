@@ -13,33 +13,10 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 @Repository
-public class CategoryDaoImpl implements CategoryDao {
-    @Autowired
-    private SessionFactory sessionFactory;
+public class CategoryDaoImpl extends HibernateDao implements CategoryDao {
 
-    @Override
-    public List<Category> findAll() {
-        // Open a session
-        Session session = sessionFactory.openSession();
-
-        // Get a CriteriaBuilder
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-
-        // Get a CriteriaQuery for the Category class
-        CriteriaQuery<Category> categoryCriteriaQuery =
-                builder.createQuery(Category.class);
-
-        // Specify Criteria root
-        categoryCriteriaQuery.from(Category.class);
-
-        // Execute query
-        List<Category> categories =
-                session.createQuery(categoryCriteriaQuery).getResultList();
-
-        // Close the session
-        session.close();
-
-        return categories;
+    public CategoryDaoImpl() {
+        typeParameterClass = Category.class;
     }
 
     @Override
@@ -53,37 +30,12 @@ public class CategoryDaoImpl implements CategoryDao {
 
     @Override
     public void save(Category category) {
-        // Open a session
-        Session session = sessionFactory.openSession();
-
-        // Begin a transaction
-        session.beginTransaction();
-
-        // Save the category
-        session.saveOrUpdate(category);
-
-        // Commit the transaction
-        session.getTransaction().commit();
-
-        // Close the session
-        session.close();
+        super.save(category);
     }
 
     @Override
     public void delete(Category category) {
-        // Open a session
-        Session session = sessionFactory.openSession();
-
-        // Begin a transaction
-        session.beginTransaction();
-
-        // Delete the category
-        session.delete(category);
-
-        // Commit the transaction
-        session.getTransaction().commit();
-
-        // Close the session
-        session.close();
+        super.delete(category);
     }
+
 }
