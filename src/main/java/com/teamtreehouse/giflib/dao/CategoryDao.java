@@ -4,9 +4,9 @@ import com.teamtreehouse.giflib.model.Category;
 
 import java.util.List;
 
-public interface CategoryDao {
-    List<Category> findAll();
-    Category findById(Long id);
-    void save(Category category);
-    void delete(Category category);
+public interface CategoryDao<T> {
+    List<T> findAll();
+    T findById(Long id);
+    void save(T t);
+    void delete(T t);
 }

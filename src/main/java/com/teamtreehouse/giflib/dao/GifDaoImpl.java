@@ -25,14 +25,4 @@ public class GifDaoImpl extends HibernateDao implements GifDao {
         return gif;
     }
 
-    @Override
-    public void save(Gif gif) {
-        super.save(gif);
-    }
-
-    @Override
-    public void delete(Gif gif) {
-        super.delete(gif);
-    }
-
 }

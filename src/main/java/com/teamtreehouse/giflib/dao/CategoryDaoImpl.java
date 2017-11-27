@@ -28,14 +28,4 @@ public class CategoryDaoImpl extends HibernateDao implements CategoryDao {
         return category;
     }
 
-    @Override
-    public void save(Category category) {
-        super.save(category);
-    }
-
-    @Override
-    public void delete(Category category) {
-        super.delete(category);
-    }
-
 }

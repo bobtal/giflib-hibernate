@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
-    private CategoryDao categoryDao;
+    private CategoryDao<Category> categoryDao;
 
     @Override
     public List<Category> findAll() {

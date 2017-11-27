@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class GifServiceImpl implements GifService {
     @Autowired
-    private GifDao gifDao;
+    private GifDao<Gif> gifDao;
 
     @Override
     public List<Gif> findAll() {
